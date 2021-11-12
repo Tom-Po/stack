@@ -1,0 +1,72 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "react-hooks"
+  ],
+  "globals": {
+    "React": true,
+    "JSX": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "react/jsx-filename-extension": [ "warn", {"extensions": [".tsx"]} ],
+    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-param-reassign": [2, { "props": false }],
+    "react/jsx-props-no-spreading": 1,
+    "react/no-unescaped-entities": 1,
+    // eslint-no-shadow donne une erreur avec TS, il faut utiliser le package de Typescript
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    // même combat
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    // Inutile: on utilise TS pas Proptypes
+    "react/prop-types": 0,
+    // Ne force pas les extensions suivantes pour l'import
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "eslint-import-resolver-custom-alias": {
+        "alias": {
+          "@Components": "./assets/components",
+          "@Images": "./assets/images"
+        },
+        "extensions": [".js", ".jsx", ".tsx", ".ts"],
+        "packages": [
+          "packages/*"
+        ]
+      }
+    }
+  }
+}
